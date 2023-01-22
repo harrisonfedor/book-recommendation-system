@@ -26,7 +26,6 @@ class SearchFragment : Fragment() {
         }
     }
 
-
     /**
      * On create view
      *

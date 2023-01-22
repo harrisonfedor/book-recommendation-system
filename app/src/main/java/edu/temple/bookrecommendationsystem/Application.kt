@@ -32,16 +32,19 @@ class Application {
          * @return an ArrayList of Book objects
          */
         fun csvToBookArray(csv: String) : ArrayList<Book> {
+            //TODO: make this work for IDs
             val books = ArrayList<Book>()
             var url : String
             val elements = csv.replace("[0-9]+,".toRegex(),"").split(",http","\n")
             Log.d("Elements: ", elements.toString())
             for(i in 3 until elements.size - 1 step 2) {
                 url = "http" + elements[i+1]
-                books.add(Book(elements[i], url))
+                books.add(Book(elements[i], url, 0)) //TODO: remove temp id of 0
             }
             return books
         }
+
+        //TODO: write ArrayList<Book> to csv function
 
         /**
          * Loads an image from a url
@@ -51,7 +54,6 @@ class Application {
          */
         fun loadImage(url: String, imageView: ImageView) {
             Picasso.get().load(url).into(imageView)
-
         }
     }
 }

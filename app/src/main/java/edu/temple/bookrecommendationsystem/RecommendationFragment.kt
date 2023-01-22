@@ -68,7 +68,7 @@ class RecommendationFragment : Fragment() {
             readButton.visibility = GONE
             GlobalScope.launch(Dispatchers.IO) {
                 deferred = async {
-                    pyRecs = fetchRecs()
+                    pyRecs = fetchRecs(ArrayList())
                     Application.Singleton.recommendations = pyRecs}
                 deferred.await()
                 GlobalScope.launch(Dispatchers.Main) {
@@ -110,8 +110,9 @@ class RecommendationFragment : Fragment() {
      *
      * @return an ArrayList of Book objects using Application.Singleton.csvToBookArray
      */
-    private fun fetchRecs() : ArrayList<Book> {
+    private fun fetchRecs(likedBooks: ArrayList<Book>) : ArrayList<Book> {
         val py = Python.getInstance()
+        //TODO: fix python to receive liked books
         val pyMod = py.getModule("ratings_refactored")
         return Application.Singleton.csvToBookArray(pyMod.callAttr("generate_recs").toString())
     }

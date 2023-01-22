@@ -16,14 +16,6 @@ import android.widget.Button
  * @constructor Create Toolbar fragment
  */
 class ToolbarFragment : Fragment() {
-    /**
-     * On create
-     *
-     * @param savedInstanceState
-     */
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     /**
      * On create view

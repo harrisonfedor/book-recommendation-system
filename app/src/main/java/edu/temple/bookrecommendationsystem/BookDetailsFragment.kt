@@ -39,7 +39,8 @@ class BookDetailsFragment(_type: Int) : Fragment() {
         super.onCreate(savedInstanceState)
         title = arguments?.get("title") as String
         cover = arguments?.get("cover") as String
-        book = Book(title, cover)
+        val id = arguments?.get("id") as Int
+        book = Book(title, cover, id)
     }
 
     /**
